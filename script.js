@@ -112,49 +112,106 @@ calcAge(1991); */
 // matilda.calcAge();
 
 // const f = jonas.calcAge;
-var firstName = 'Matilda';
+// var firstName = 'Matilda';
 
-const jonas = {
-  firstName: 'Jonas',
-  year: 1991,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
+// const jonas = {
+//   firstName: 'Jonas',
+//   year: 1991,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
 
-    // //Solution1
-    // const self = this; // self or that
-    // const isMillenial = function () {
-    //   console.log(self);
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    // };
+//     // //Solution1
+//     // const self = this; // self or that
+//     // const isMillenial = function () {
+//     //   console.log(self);
+//     //   console.log(self.year >= 1981 && self.year <= 1996);
+//     // };
 
-    //Solution2
-    const isMillenial = () => {
-      console.log(this);
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
-    isMillenial();
-  },
+//     //Solution2
+//     const isMillenial = () => {
+//       console.log(this);
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     isMillenial();
+//   },
 
-  //Never use arrow function like a method
-  greet: () => console.log(`Hey ${this.firstName}`),
+//   //Never use arrow function like a method
+//   greet: () => console.log(`Hey ${this.firstName}`),
+// };
+
+// jonas.greet();
+// jonas.calcAge();
+
+// // arguments keyword
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addExpr(2, 5);
+// addExpr(2, 5, 8, 12);
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+
+// addArrow(2, 5, 8);
+
+/* 
+let age = 30;
+let oldAge = age;
+age = 31;
+
+console.log(age);
+console.log(oldAge);
+
+const me = {
+  name: 'Jonas',
+  age: 30,
 };
 
-jonas.greet();
-jonas.calcAge();
+const friend = me;
+friend.age = 27;
 
-// arguments keyword
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
+console.log('friend', friend);
+console.log('Me', me);
+ */
+
+//Primitive Types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName);
+
+//Reference types
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
 };
 
-addExpr(2, 5);
-addExpr(2, 5, 8, 12);
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage', jessica);
+console.log('After marriage', marriedJessica);
+// marriedJessica = {}; //with const doesn't work but with let does.
 
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
+//Copying objetcts
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
 };
 
-addArrow(2, 5, 8);
+const jessicaCopy = Object.assign({}, jessica2);
+jessicaCopy.lastName = 'Davis';
+console.log('Before marriage', jessica2);
+console.log('After marriage', jessicaCopy);
+
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+console.log('Before marriage', jessica2);
+console.log('After marriage', jessicaCopy);
